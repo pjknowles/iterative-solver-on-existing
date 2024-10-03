@@ -134,7 +134,8 @@ subroutine rhs_vectors(rhs,n,nvec)
 
   rhs(:,:)=0d0
   do ivec=1,nvec
-     do i=max(i-3,1),min(i+3,n)
+!     do i=max(i-3,1),min(i+3,n) ! I don't understand this
+     do i=max(ivec-3,1),min(ivec+3,n)
         rhs(i,ivec)=dble(i)
      enddo
   enddo
