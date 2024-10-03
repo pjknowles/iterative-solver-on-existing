@@ -3,7 +3,6 @@ module mod_problem
   private
   type, extends(Problem), public :: our_problem
     double precision, dimension(:, :), pointer, public :: m_rhs
-    double precision, dimension(:), pointer, public :: m_diag
   contains
     procedure, pass :: diagonals
     procedure, pass :: action
@@ -95,7 +94,6 @@ program test_solver
   !preconditioner:  diag holds the matrix diagonal
   !matrix*vector:   A_times_x subroutine
   problem%m_rhs => rhs
-  problem%m_diag => diag
   n_buffers = nvec ! could be more (not useful) or fewer
   n_buffers = 2
   allocate(c(n, n_buffers), g(n, n_buffers))
